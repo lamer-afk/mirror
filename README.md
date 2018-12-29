@@ -16,7 +16,8 @@ import android.app.Application;
 import android.os.IBinder;
 import android.os.Looper;
 
-public class ActivityThread {
+//一定要实现IRemoteObject这个标记接口
+public class ActivityThread implements IRemoteObject{
 
     //命名必须为TYPE，返回类型是反射的类的Class对象
     public static final Class TYPE = RefClass.load(ActivityThread.class,"android.app.ActivityThread");
