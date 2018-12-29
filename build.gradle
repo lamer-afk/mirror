@@ -44,3 +44,21 @@ task makeJar(type: org.gradle.api.tasks.bundling.Jar) {
 }
 
 makeJar.dependsOn(clearJar, build)
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
