@@ -1,10 +1,5 @@
 # Mirror
-反射工具，用来更方便的访问系统/第三方。项目基于asLody的
-
-[VirtualApp]: https://github.com/asLody/VirtualApp
-
-中的部分代码扩展。
-
+反射工具，用来更方便的访问系统/第三方。项目基于asLody的 [VirtualApp]: https://github.com/asLody/VirtualApp 中的部分代码进行扩展。
 
 
 使用示例 (以ActivityThread为例)
