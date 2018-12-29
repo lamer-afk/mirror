@@ -11,6 +11,8 @@
 
 ------
 
+第一步，创建镜像Class。（RefClass.load方法，第一个参数为当前镜像Class，第二个参数为目标Class）
+
 ```java
 package mirror;
 
@@ -44,23 +46,26 @@ public class ActivityThread {
     //目标Class存在成员方法getActivity，参数为IBinder.class，返回类型为Activity.class
     @MethodParams(IBinder.class)
     public MemberMethod<Activity> getActivity;
-    
-    {
-        //直接使用即可
-        ActivityThread.TAG.set("set by mirror");
-        //反射获取report的值
-        int report = ActivityThread.DONT_REPORT.get();
-        
-        //对于成员方法（非静态）
-        //先获取对象
-        ActivityThread activityThread = ActivityThread.mAppThread.get();
-        //调用成员方法
-        Looper looper = activityThread.getLooper.call();
-        //获取-设置成员变量
-        activityThread.mInitialApplication.set(null);
-        activityThread.mInitialApplication.get();
-    }
-}
 
+```
+
+
+
+第二步，使用自己创建的镜像Class。
+
+```java
+ //直接使用即可，不需要任何赋值操作
+ ActivityThread.TAG.set("set by mirror");
+ //反射获取report的值
+ int report = ActivityThread.DONT_REPORT.get();
+        
+ //对于成员方法（非静态）
+ //先获取对象
+ ActivityThread activityThread = ActivityThread.mAppThread.get();
+ //调用成员方法
+ Looper looper = activityThread.getLooper.call();
+ //获取-设置成员变量
+ activityThread.mInitialApplication.set(null);
+ activityThread.mInitialApplication.get();
 ```
 
