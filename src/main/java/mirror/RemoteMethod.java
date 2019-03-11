@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 
 
 /**
- * Created by lamer on 2018/12/30 01:11
+ * Created by chaos on 2018/12/12 19:18
  * <p>
  * mail: 157688302@qq.com
  */
@@ -34,7 +34,7 @@ class RemoteMethod<T> extends RemoteAccessible {
                     }
                 }
             }
-            this.method = deepFindMethod(cls, field.getName(), types, false);
+            this.method = deepFindMethod(cls, RemoteCaller.getFeildName(field), types, false);
         } else if (field.isAnnotationPresent(MethodReflectParams.class)) {
             boolean arrayset = false;
             String[] typeNames = field.getAnnotation(MethodReflectParams.class).value();
@@ -68,19 +68,19 @@ class RemoteMethod<T> extends RemoteAccessible {
                 }
             }
             try {
-                this.method = deepFindMethod(cls, field.getName(), types, false);
+                this.method = deepFindMethod(cls, RemoteCaller.getFeildName(field), types, false);
             } catch (Exception e) {
                 e.printStackTrace();
                 if (arrayset) {
-                    this.method = cls.getDeclaredMethod(field.getName(), types2);
+                    this.method = cls.getDeclaredMethod(RemoteCaller.getFeildName(field), types2);
                 }
             }
             this.method.setAccessible(true);
         } else {
-            this.method = deepFindMethod(cls, field.getName(), null, true);
+            this.method = deepFindMethod(cls, RemoteCaller.getFeildName(field), null, true);
         }
         if (this.method == null) {
-            throw new NoSuchMethodException(field.getName() + " in class [" + cls.getName() + "]");
+            throw new NoSuchMethodException(RemoteCaller.getFeildName(field) + " in class [" + cls.getName() + "]");
         } else {
             this.method.setAccessible(true);
         }

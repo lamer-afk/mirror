@@ -3,9 +3,9 @@ package mirror;
 import java.lang.reflect.Field;
 
 /**
- * Created by lamer on 2018/12/30 01:11
- * <p>
- * mail: 157688302@qq.com
+ * 是Static描述，构造器不存在非static情况，这不符合常理.
+ *
+ * @param <T>
  */
 public class RefConstructor<T> extends RemoteConstructor<T> {
 

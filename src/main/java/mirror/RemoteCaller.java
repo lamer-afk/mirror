@@ -1,5 +1,7 @@
 package mirror;
 
+import android.text.TextUtils;
+
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -9,7 +11,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 /**
- * Created by lamer on 2018/12/30 01:11
+ * Created by chaos on 2018/12/12 17:38
  * <p>
  * mail: 157688302@qq.com
  */
@@ -95,5 +97,33 @@ public class RemoteCaller {
             return null;
         }
         return RefCreater.findRealObject(object);
+    }
+
+    static String getFeildName(Field field) {
+        if (field == null) {
+            throw new RuntimeException("convertToRemote => getFeildName , field is nullptr");
+        }
+        Named named = field.getAnnotation(Named.class);
+        if (named == null) {
+            return field.getName();
+        }
+
+        String name = named.value();
+        if (name == null || name.length() == 0) {
+            return field.getName();
+        } else {
+            return name;
+        }
+    }
+
+    public static String remoteToString(IRemoteObject remoteObject) {
+        if (remoteObject == null) {
+            return "nullptr";
+        }
+        Object remote = RemoteCaller.getAttachObject(remoteObject);
+        if (remote == null) {
+            return "nullptr";
+        }
+        return remote.toString();
     }
 }

@@ -3,7 +3,7 @@ package mirror;
 import java.lang.reflect.Field;
 
 /**
- * Created by lamer on 2018/12/30 01:11
+ * Created by chaos on 2018/12/12 19:28
  * <p>
  * mail: 157688302@qq.com
  */
@@ -14,7 +14,7 @@ class RemoteObject<T> extends RemoteAccessible {
     public RemoteObject(Object that, Class<?> cls, Field field) throws NoSuchFieldException {
         initRemote(cls, field);
         this.that = that;
-        this.field = cls.getDeclaredField(field.getName());
+        this.field = cls.getDeclaredField(RemoteCaller.getFeildName(field));
         this.field.setAccessible(true);
     }
 
@@ -32,7 +32,14 @@ class RemoteObject<T> extends RemoteAccessible {
 
     public void set(T value) {
         try {
-            this.field.set(that, value);
+            Object v;
+            //处理一下remote类型
+            if (value instanceof IRemoteObject) {
+                v = realObject((IRemoteObject) value);
+            }else{
+                v = value;
+            }
+            this.field.set(that, v);
         } catch (Exception e) {
             //Ignore
         }

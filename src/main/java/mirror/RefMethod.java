@@ -7,9 +7,6 @@ import java.lang.reflect.Method;
 import static mirror.RefStaticMethod.getProtoType;
 
 /**
- * Created by lamer on 2018/12/30 01:11
- * <p>
- * mail: 157688302@qq.com
  * pls use MemberMethod or RefStaticMethod replace.
  * <p>
  * {@link MemberMethod} or {@link RefStaticMethod}

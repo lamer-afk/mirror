@@ -7,11 +7,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 
-/**
- * Created by lamer on 2018/12/30 01:11
- * <p>
- * mail: 157688302@qq.com
- */
 public final class RefClass {
 
     public static Class<?> load(Class<?> mappingClass, String className) {

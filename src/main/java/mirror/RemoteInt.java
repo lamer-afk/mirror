@@ -3,7 +3,7 @@ package mirror;
 import java.lang.reflect.Field;
 
 /**
- * Created by lamer on 2018/12/30 01:11
+ * Created by chaos on 2018/12/12 19:39
  * <p>
  * mail: 157688302@qq.com
  */
@@ -14,7 +14,7 @@ class RemoteInt  /* no need extends RemoteAccessible */ {
 
     public RemoteInt(Object that, Class cls, Field field) throws NoSuchFieldException {
         this.that = that;
-        this.field = cls.getDeclaredField(field.getName());
+        this.field = cls.getDeclaredField(RemoteCaller.getFeildName(field));
         this.field.setAccessible(true);
     }
 

@@ -6,7 +6,7 @@ import java.lang.reflect.Modifier;
 import java.util.HashMap;
 
 /**
- * Created by lamer on 2018/12/30 01:11
+ * Created by chaos on 2018/12/12 16:46
  * <p>
  * mail: 157688302@qq.com
  */
@@ -116,7 +116,7 @@ public class RefCreater {
                 // Ignore
             }
         }
-        String msg = String.format("Can not found MemberXXX from IRemoteObject , Type[%s] Value[%s] . pls check.", remoteObject.getClass().getName(), remoteObject);
+        String msg = String.format("Can not found MemberXXX from IRemoteObject , Type[%s] . pls check.", remoteObject.getClass().getName());
         throw new IllegalArgumentException(msg);
     }
 
